@@ -59,7 +59,7 @@ export const login = async (req, res) => {
       genToken(user._id, res);
       res.status(200).json({
         _id: user._id,
-        fullname: user.fullName,
+        fullName: user.fullName,
         password: user.password,
         email: user.email,
         profilePic: user.profilePic,
@@ -91,10 +91,11 @@ export const updateProfile = async (req,res) => {
       return res.status(400).json({message: "No Profile pic added"});
     }
     const uploadedResponse = await cloudinary.uploader.upload(profilePic)
-    const updatedUser = await user.findByIDAndUpdate(userId, {profilePic: uploadedResponse.secure_url},{new: true})
-    res.status(200).json({message: "updated profile."})
+    const updatedUser = await user.findByIdAndUpdate(userId, {profilePic: uploadedResponse.secure_url},{new: true})
+    res.status(200).json(updatedUser)
   } catch (error) {
     console.log("error in update profile controller");
+    console.log(error)
     res.status(400).json({message: "Internal server eroor"})
   }
 };
