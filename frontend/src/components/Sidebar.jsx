@@ -13,7 +13,7 @@ const Sidebar = () => {
   useEffect(() => {
     getUsers();
   }, [getUsers]);
-  const filteredUsers = showOnlineOnly ? users.filer(user => onlineUsers.includes(user._id)) : users;
+  const filteredUsers = showOnlineOnly ? users.filter(user => onlineUsers.includes(user._id)) : users;
   
 
   if (isUsersLoading) return <SidebarSkeleton />;
