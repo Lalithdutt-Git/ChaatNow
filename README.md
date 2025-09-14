@@ -2,6 +2,8 @@
 
 A MERN stack based real-time chat application.
 
+Deployed & accessible at https://chaatnow.onrender.com !
+
 ## Features
 
 - User authentication (signup, login, logout)
